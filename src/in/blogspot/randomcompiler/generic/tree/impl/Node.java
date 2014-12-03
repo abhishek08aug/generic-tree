@@ -5,6 +5,12 @@ public class Node<T> {
     private Node<T> left;
     private Node<T> right;
     
+    public Node() {
+        data = null;
+        left = null;
+        right = null;
+    }
+    
     public T getData() {
         return data;
     }

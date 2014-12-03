@@ -42,4 +42,20 @@ public class Tree<T> {
         }
         System.out.println();
     }
+
+    public void countLeaves() {
+        System.out.println("No. of leaves in the tree: " + countLeaves(root));
+    }
+
+    private int countLeaves(Node<T> node) {
+        if(node == null) {
+            return 0;
+        }
+        int subtreeCount = countLeaves(node.getLeft()) + countLeaves(node.getRight());
+        if(subtreeCount == 0) {
+            return 1;
+        } else {
+            return subtreeCount;
+        }
+    }
 }
