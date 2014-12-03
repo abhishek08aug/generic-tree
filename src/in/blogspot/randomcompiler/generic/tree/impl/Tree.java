@@ -3,7 +3,7 @@ package in.blogspot.randomcompiler.generic.tree.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tree<T> {
+public class Tree<T extends Comparable> {
     private Node<T> root;
 
     public Node<T> getRoot() {
@@ -57,5 +57,27 @@ public class Tree<T> {
         } else {
             return subtreeCount;
         }
+    }
+    
+    public void isBST() {
+        System.out.println(isBST(root) ? "YES" : "NO");
+    }
+
+    private boolean isBST(Node<T> node) {
+        if(node == null) {
+            return true;
+        }
+        if(node.getLeft() != null && node.getLeft().getData().compareTo(node.getData()) > 0) {
+            return false;
+        }
+        if(node.getRight() != null && node.getRight().getData().compareTo(node.getData()) <= 0) {
+            return false;
+        }
+        boolean leftIsBST = isBST(node.getLeft());
+        boolean rightIsBST = isBST(node.getRight());
+        if(leftIsBST && rightIsBST) {
+            return true;
+        }
+        return false;
     }
 }
